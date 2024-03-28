@@ -1,6 +1,11 @@
 from django.core.exceptions import ImproperlyConfigured
 import json
+import os
+from dotenv import load_dotenv
 
+
+# Carga las variables de entorno desde el archivo .env
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from unipath import Path
@@ -15,7 +20,7 @@ BASE_DIR = Path(__file__).ancestor(3)
 
 
 
-SECRET_KEY = 'django-insecure-yosg(n-$&+pk6)(jva-*3fwpikot2f59l5*xdd^o+r=t7m&rrs'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 
