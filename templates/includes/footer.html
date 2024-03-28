@@ -1,0 +1,64 @@
+<div class="module-small bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="widget">
+            <h5 class="widget-title font-alt">Sobre mi</h5>
+            
+            <p>Teléfono: {{ infoHome.phone }}</p>
+            <p>Email: <a href="mailto:{{infoHome.email}}">{{ infoHome.email }}</a></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="widget">
+            <h5 class="widget-title font-alt">Fast links</h5>
+            <ul class="icon-list">
+                
+                {% for link in menu_header %}
+                    <li><a href="{{link.url}}">{{ link.title }}</a></li>
+                {% endfor %}
+                    
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-sm-4">
+          <div class="widget">
+            <h5 class="widget-title font-alt">Servicios Populares</h5>
+            <ul class="widget-posts">
+                
+                {% for hot_service in hotServices %}
+                    <li class="clearfix">
+                       
+                        <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="#">{{ hot_service.title }}</a></div>
+                        <div class="widget-posts-meta">{{ hot_service.created|date:"d M Y" }}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="divider-d">
+  <footer class="footer bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="copyright font-alt">&copy; 2017&nbsp; luis Felipe Echeverry</p>
+        </div>
+        <div class="col-sm-6">
+          <div class="footer-social-links">
+            
+            {% for red in redes_sociales %}
+            <a href="{% if red.url %} {{red.url}}{% else %} # {% endif %} "><i class="{{ red.icon }}"></i></a>
+              
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>

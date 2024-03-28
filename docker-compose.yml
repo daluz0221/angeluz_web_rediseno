@@ -1,0 +1,11 @@
+version: '3'
+
+
+services:
+  web:
+    image: angeluz
+    ports:
+      - "9000:8000"
+    volumes:
+      - .:/app
+
