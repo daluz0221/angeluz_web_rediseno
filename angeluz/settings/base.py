@@ -42,6 +42,7 @@ LOCAL_APPS = (
     'aplications.service',
     'aplications.faq',
     'aplications.users',
+    'aplications.newsletter',
 )
 
 THIRD_PARTY_APPS = (
