@@ -1,1 +1,26 @@
-<h1>hello zawardo</h1>
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    {% include 'modulos/backgrounds/v1.html' %}
+
+    {% for section in infoSections %}
+
+        {% if section.section == '1' %}
+            {% include 'modulos/about/v1.html' with info=section %}
+        {% elif section.section == '2' %}
+            <hr class="divider-w">
+                {% include 'modulos/faqs/v1.html' with faqs=faqs_home %}
+            <hr class="divider-w">
+        {% elif section.section == '4' %}
+            {% include 'modulos/servicios/v1.html' with info=section %}
+        {% elif section.section == '3' %}
+            {% include 'modulos/blog/v1.html' with info=section entradas=entradas_home %}
+        {% elif section.section == '5' %}
+            {% include 'modulos/newsletter/v1.html' with info=section %}
+        {% endif %}
+                
+    {% endfor %}
+    
+{% endblock content %}

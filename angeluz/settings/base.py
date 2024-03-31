@@ -43,6 +43,7 @@ LOCAL_APPS = (
     'aplications.faq',
     'aplications.users',
     'aplications.newsletter',
+    'aplications.contact',
 )
 
 THIRD_PARTY_APPS = (
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'aplications.context_processor.header_and_footer',
             ],
         },
     },

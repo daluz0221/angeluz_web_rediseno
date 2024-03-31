@@ -25,11 +25,12 @@ class RedesSocialesAdmin(admin.ModelAdmin):
 
 class HeaderLinksAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ('name', 'url', 'active')
+    list_display = ('name', 'url', 'orden', 'active')
     ordering = ('orden', 'created')
     search_fields = ('created', 'name')
     date_hierarchy = 'created'
     list_filter = ('created', 'active')
+    list_editable = ('orden', 'active')
 
 class InfoHomeAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
@@ -41,11 +42,12 @@ class InfoHomeAdmin(admin.ModelAdmin):
 
 class InfoSectionAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ('section', 'active')
+    list_display = ('section', 'orden', 'active')
     ordering = ('created', 'title')
     search_fields = ('title', 'created')
     date_hierarchy = 'created'
     list_filter = ('created', 'section', 'active')
+    list_editable = ('orden', 'active')
 
 
 admin.site.register(Background, BackgroundAdmin)

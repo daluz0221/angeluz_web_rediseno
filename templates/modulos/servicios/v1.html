@@ -1,0 +1,29 @@
+<section class="module" id="services">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            {% if info.title %}
+          <h2 class="module-title font-alt">{{ info.title }}</h2>
+          {% endif %}
+          {% if info.subtitle %}
+            <div class="module-subtitle font-serif">{{ info.subtitle }}.</div>
+          {% endif %}
+          {% if info.description %}
+            <div class="module-subtitle">{{ info.description|safe }}</div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row multi-columns-row">
+        
+        {% for servicio in servicios %}
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="features-item">
+              <div class="features-icon"><i class="{{ servicio.icon }}"></i></div>
+              <h3 class="features-title font-alt">{{ servicio.title }}</h3>
+              <p>{{ servicio.summary|safe }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>

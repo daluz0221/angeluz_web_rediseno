@@ -1,0 +1,24 @@
+<div class="module-small bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2">
+          <div class="callout-text font-alt">
+            <h3 class="callout-title">{{info.title}}</h3>
+            <p>{{ info.subtitle }}</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-4">
+          <div class="callout-btn-box">
+            <form  role="form" method="post" action="#">
+                {% csrf_token %}
+              <div class="input-group">
+                <input class="form-control" type="email" id="id_email" name="email" placeholder="Your Email" data-validation-required-message="Please enter your email address." required="required"/><span class="input-group-btn">
+                  <button class="btn btn-g btn-round"  type="submit">Enviar</button></span>
+              </div>
+            </form>
+            <div class="text-center" id="subscription-response"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

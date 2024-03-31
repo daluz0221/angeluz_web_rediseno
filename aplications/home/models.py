@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-from .managers import BackgroundManager
+from .managers import BackgroundManager, InfoSectionManager, HeaderLinksManager
 
 class Background(models.Model):
 
@@ -77,6 +77,8 @@ class HeaderLinks(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
 
+    objects = HeaderLinksManager()
+
     class Meta:
         verbose_name = 'enlace del menú'
         verbose_name_plural = 'enlaces del menú'
@@ -110,12 +112,11 @@ class InfoHome(models.Model):
 class InfoSection(models.Model):
 
     SECTION_CHOICES = [
-        ('1', 'home'),
+        ('1', 'sobre mi'),
         ('2', 'faq'),
         ('3', 'entradas'),
         ('4', 'servicios'),
-        ('5', 'contacto'),
-        ('6', 'sobre mi'),
+        ('5', 'newsletter'),
     ]
 
     section = models.CharField(max_length=1, choices=SECTION_CHOICES, verbose_name='Sección')
@@ -123,9 +124,12 @@ class InfoSection(models.Model):
     subtitle = models.CharField(max_length=200, verbose_name='Subtítulo', blank=True, null=True)
     content = models.TextField(verbose_name='Contenido', blank=True, null=True)
     image = models.ImageField(verbose_name='Imagen', upload_to='home', blank=True, null=True)
+    orden = models.SmallIntegerField(verbose_name='Orden', default=0)
     active = models.BooleanField(verbose_name='Activo', default=False)
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
+
+    objects = InfoSectionManager()
 
     class Meta:
         verbose_name = 'información de sección'

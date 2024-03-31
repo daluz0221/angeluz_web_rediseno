@@ -1,0 +1,24 @@
+<section class="module">
+    <div class="container">
+      <div class="row">
+        <h2 class="font-alt mb-30" style="text-align: center;font-size: 5rem;">{{ section.encabezado }}</h2>
+        <div class="col-sm-12">
+          <div class="panel-group" id="accordion">
+            
+            {% for faq in faqs %}
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title font-alt"><a data-toggle="collapse" data-parent="#accordion" href="#{{faq.question|cut:" "}}">{{ faq.question }}</a></h4>
+                </div>
+                <div class="panel-collapse collapse" id="{{faq.question|cut:" "}}">
+                    <div class="panel-body">{{ faq.answer }}
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>

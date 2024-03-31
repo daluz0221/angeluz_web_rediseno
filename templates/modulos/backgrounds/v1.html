@@ -1,0 +1,23 @@
+{% if background %}
+<section class="home-section bg-dark-30" id="home" data-background="{{media_url}}{{ background.image }}">
+    <div class="titan-caption">
+        <div class="caption-content">
+            {% if background.subtitle %}
+                <div class="font-alt mb-30 titan-title-size-1">{{ background.subtitle }}</div>
+            {% endif %}
+            {% if background.title %}
+                <div class="font-alt mb-40 titan-title-size-4">{{background.title}}</div>
+            {% endif %}
+            {% if background.button %}
+                <a class="section-scroll btn btn-border-w btn-round" 
+                {% if background.url %}
+                href="{{background.url}}"
+                {% else %}      
+                    href="#"
+                {% endif %}
+                >{{background.button}}</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

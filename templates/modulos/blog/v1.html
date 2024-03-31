@@ -1,0 +1,31 @@
+<section class="module" id="news">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          
+            {% if section.section == "3" %}
+              <h2 class="module-title font-alt">{{ section.title }}</h2>
+              <div class="module-subtitle font-serif">{{ section.content|safe }}</div>
+            {% endif %}
+        </div>
+      </div>
+      <div class="row multi-columns-row post-columns">
+        {% for entrada in entradas %}
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <div class="post mb-20">
+                    <div class="post-thumbnail"><a href="#"><img src="{{media_url}}{{entrada.image}} " alt="Blog-post Thumbnail"/></a></div>
+                <div class="post-header font-alt">
+                <h2 class="post-title"><a href="#">{{ entrada.title }}</a></h2>
+                <div class="post-meta">By&nbsp;<span>{{entrada.autor.name}}</span>&nbsp;| {{ entrada.created|date:"d M Y" }} 
+                </div>
+                </div>
+                <div class="post-entry">
+                  {{ entrada.summary|safe|truncatechars:250  }}
+                </div>
+                <div class="post-more"><a class="more-link" href="#">Ver más</a></div>
+            </div>
+            </div>
+        {% endfor %}  
+      </div>
+    </div>
+  </section>
