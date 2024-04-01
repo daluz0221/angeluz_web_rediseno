@@ -1,14 +1,15 @@
 
-from aplications.home.models import HeaderLinks
+from aplications.home.models import HeaderLinks, InfoHome
+from aplications.service.models import Service
 
 
 
 
 def header_and_footer(request):
     links = HeaderLinks.objects.get_menu_links()
-    # infoHome = InfoHome.objects.activo()
+    infoHome = InfoHome.objects.activo()
     # infoSections = SectionInfo.objects.activos()
-    # hotServices = Service.objects.hot_services()
+    hotServices = Service.objects.hot_services()
     # redesSociales = RedesSociales.objects.activo()
     # dominio_main = Dominio.objects.all().first()
 
@@ -27,4 +28,6 @@ def header_and_footer(request):
     return {
         'media_url': '/media/',
         'menu_header': links,
+        'infoHome': infoHome,
+        'hotServices': hotServices,
     }

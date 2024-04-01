@@ -11,7 +11,7 @@
             {% include 'modulos/about/v1.html' with info=section %}
         {% elif section.section == '2' %}
             <hr class="divider-w">
-                {% include 'modulos/faqs/v1.html' with faqs=faqs_home %}
+                {% include 'modulos/faqs/v1.html' with faqs=faqs_home info=section %}
             <hr class="divider-w">
         {% elif section.section == '4' %}
             {% include 'modulos/servicios/v1.html' with info=section %}

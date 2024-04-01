@@ -11,6 +11,7 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ('title', 'created')
     date_hierarchy = 'created'
     list_filter = ('created', 'active', 'showHome', 'destacado')
+    prepopulated_fields = {"slug": ("title",)}
 
 
 admin.site.register(Service, ServiceAdmin)

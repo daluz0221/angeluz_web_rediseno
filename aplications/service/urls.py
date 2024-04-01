@@ -10,4 +10,9 @@ urlpatterns = [
         views.ServicesListView.as_view(),
         name='servicio'
     ),
+    path(
+        '<slug:slug>/', 
+        views.ServiceDetailView.as_view(),
+        name='servicio_detail'
+    ),
 ]

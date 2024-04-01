@@ -40,3 +40,10 @@ class HeaderLinksManager(models.Manager):
             active=True,
         ).order_by('orden')
     
+class InfoHomeManager(models.Manager):
+    """Manager para el modelo InfoHome"""
+
+    def activo(self):
+        return self.filter(
+            active=True,
+        ).first()

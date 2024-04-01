@@ -1,0 +1,24 @@
+<div class="main">
+    <section class="module-small">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="post">
+              <div class="post-thumbnail"><img src="{{media_url}}{{servicio.image}}" alt="Blog Featured Image"/></div>
+              <div class="post-header font-alt">
+                <h1 class="post-title">{{ servicio.title }}</h1>
+                
+              </div>
+              <div class="post-entry">
+                {{ servicio.description|safe }}
+              </div>
+            </div>
+            <a class="btn btn-g btn-circle" href="{% url 'service_app:servicio' %}">Volver</a>
+          </div>
+        </div>
+    </div>
+</section>
+  
+    
+  </div>

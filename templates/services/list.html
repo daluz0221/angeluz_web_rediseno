@@ -1,1 +1,10 @@
-<h1>services page</h1>
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% include 'modulos/backgrounds/v1.html' %}
+    {% include 'includes/introsection.html' with data=info %}
+
+    {% include "modulos/service/v1.html" %}
+    
+{% endblock content %}

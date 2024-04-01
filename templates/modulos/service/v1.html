@@ -1,0 +1,17 @@
+<section class="module" style="padding-top: 0;">
+    <div class="container">
+      <ul class="works-grid works-grid-3 works-grid-gut works-hover-d" id="works-grid">
+        {% for servicio in services %}            
+            <li class="work-item">
+                <a href="{% url 'service_app:servicio_detail' servicio.slug %}">
+                    <div class="work-image"><img src="{{ media_url }}{{ servicio.image }}" alt="Portfolio Item"/></div>
+                    <div class="work-caption font-alt">
+                    <h3 class="work-title">{{ servicio.title }}</h3>
+                    <div class="work-descr">{{ servicio.summary }}</div>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>

@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-from .managers import BackgroundManager, InfoSectionManager, HeaderLinksManager
+from .managers import BackgroundManager, InfoSectionManager, HeaderLinksManager, InfoHomeManager
 
 class Background(models.Model):
 
@@ -100,9 +100,11 @@ class InfoHome(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
 
+    objects = InfoHomeManager()
+
     class Meta:
-        verbose_name = 'información de la página de inicio'
-        verbose_name_plural = 'información de la página de inicio'
+        verbose_name = 'información general'
+        verbose_name_plural = 'información general'
         ordering = ['-created']
 
     def __str__(self):
@@ -138,3 +140,30 @@ class InfoSection(models.Model):
 
     def __str__(self):
         return 'Información de la sección {}'.format(self.section)
+    
+
+
+class Pagina(models.Model):
+
+    SECTION_CHOICES = [
+        ('1', 'servicios'),
+        ('2', 'sobre nosotros'),
+        ('3', 'preguntas frecuentes'),
+        ('4', 'blog'),
+        ('5', 'contacto'),
+    ]
+
+    codigo = models.CharField(max_length=1, verbose_name='Código', choices=SECTION_CHOICES)
+    encabezado = models.CharField(max_length=200, verbose_name='Encabezado', blank=True, null=True)
+    description = models.TextField(verbose_name='Descripción', blank=True, null=True)
+    active = models.BooleanField(verbose_name='Activo', default=True)
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
+
+    class Meta:
+        verbose_name = 'página'
+        verbose_name_plural = 'páginas'
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.codigo

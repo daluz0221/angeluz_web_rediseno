@@ -2,8 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <h2 class="module-title font-alt">{{ data.encabezado }}</h2>
-                <div class="module-subtitle font-serif">{{ data.description }}</div>
+                {% for info in data %}
+                    <h2 class="module-title font-alt">{{ info.encabezado }}</h2>
+                    <div class="module-subtitle font-serif">{{ info.description }}</div>
+                {% endfor %}
             </div>
         </div>
     </div>
