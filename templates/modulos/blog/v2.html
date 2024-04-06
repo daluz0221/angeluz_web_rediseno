@@ -1,0 +1,107 @@
+<div class="module">
+    <div class="container">
+        <div class="row" style="text-align: center;margin-bottom: 4rem;position: relative;">
+            {% if categoria %}
+                <h2>
+                    Categoria
+                </h2>
+                <h3>
+                    {{ categoria|upper }}
+                </h3>
+                {% endif %}
+            {% if tag %}
+                <h2>
+                    Tag
+                </h2>
+                <h3>
+                    {{ tag|upper }}
+                </h3>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-3 sidebar">
+                {% if categorias %}
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">Categorias</h5>
+                        <ul class="icon-list">
+                            {% for category in categorias %}
+                            <li><a href="{% url 'blog_app:categoria' category.slug %}">{{category}} - {{ category.entrada_set.all|length }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if entradas_destcadas %}
+                <div class="widget">
+                    <h5 class="widget-title font-alt">Entradas importantes</h5>
+                    <ul class="widget-posts">
+                        {% for entrada in entradas_destcadas %}
+                        <li class="clearfix">
+                            <div class="widget-posts-image"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img
+                                        src="{{media_url}}{{entrada.image}}" alt="Post Thumbnail" /></a></div>
+                            <div class="widget-posts-body">
+                                <div class="widget-posts-title"><a href="{% url 'blog_app:entrada' entrada.slug %}">{{ entrada.title }}</a></div>
+                                <div class="widget-posts-meta">{{ entrada.created|date:"d M" }}</div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% if tags %}
+                    <div class="widget">
+                        <h5 class="widget-title font-alt">Tags</h5>
+                        <div class="tags font-serif">
+                            {% for tag in tags %}
+                            <a href="{% url 'blog_app:tag' tag.slug %}" rel="tag">{{tag}}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-8 col-sm-offset-1"></div>
+            <div class="row multi-columns-row post-columns">
+                {% if entradas %}
+                    {% for entrada in entradas %}
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <div class="post">
+                            <div class="post-thumbnail"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img
+                                        src="{{media_url}}{{entrada.image}}" alt="Blog-post Thumbnail" /></a></div>
+                            <div class="post-header font-alt">
+                                <h2 class="post-title"><a href="{% url 'blog_app:entrada' entrada.slug %}">{{ entrada.title }}</a></h2>
+                                <div class="post-meta">By&nbsp;<a href="#">{{ entrada.autor.name }}</a>&nbsp; {{ entrada.created|date:"d M Y" }}
+                                </div>
+                            </div>
+                            <div class="post-entry">
+                                {{ entrada.summary|safe|truncatechars:250 }}
+                            </div>
+                            <div class="post-more"><a class="more-link" href="{% url 'blog_app:entrada' entrada.slug %}">Ver más</a></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <h2>No hay entradas</h2>
+                    </div>
+                {% endif %}
+            </div>
+            {% if entradas|length > 5 %}
+                <div class="pagination font-alt">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+                    {% endif %}
+                    {% for page in paginator.page_range %}
+                        {% if page_obj.number == page %}
+                            <a class="active" href="?page={{ page }}">{{ page }}</a>
+                        {% else %}
+                            <a href="?page={{ page }}">{{ page }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</section>

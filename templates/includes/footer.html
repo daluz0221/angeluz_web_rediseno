@@ -31,7 +31,7 @@
                     <li class="clearfix">
                         <div class="widget-posts-image"><a href="{% url 'service_app:servicio_detail' hot_service.slug %}"><img src="{{ media_url }}{{ hot_service.image }}" alt="Post Thumbnail"/></a></div>
                         <div class="widget-posts-body">
-                          <div class="widget-posts-title"><a href="#">{{ hot_service.title }}</a></div>
+                          <div class="widget-posts-title"><a href="{% url 'service_app:servicio_detail' hot_service.slug %}">{{ hot_service.title }}</a></div>
                           <div class="widget-posts-meta">{{ hot_service.created|date:"d M Y" }}</div>
                         </div>
                     </li>

@@ -1,0 +1,93 @@
+<div class="main">
+    <section class="module-small">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-md-3 sidebar">
+            <div class="widget">
+              <h5 class="widget-title font-alt">Categorias</h5>
+              <ul class="icon-list">
+                {% for category in categorias %}
+                  <li><a href="{% url 'blog_app:categoria' category.slug %}">{{category}} - {{ category.entrada_set.all|length }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="widget">
+              <h5 class="widget-title font-alt">Entradas importantes</h5>
+              <ul class="widget-posts">
+                {% for entrada in entradas %}
+                  <li class="clearfix">
+                    <div class="widget-posts-image"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img src="{{media_url}}{{entrada.image}}" alt="Post Thumbnail"/></a></div>
+                    <div class="widget-posts-body">
+                      <div class="widget-posts-title"><a href="{% url 'blog_app:entrada' entrada.slug %}">{{ entrada.title }}</a></div>
+                      <div class="widget-posts-meta">{{ entrada.created|date:"d M" }}</div>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="widget">
+              <h5 class="widget-title font-alt">Tag</h5>
+              <div class="tags font-serif">
+                {% for tag in entrada.tags.all %}
+                  <a href="{% url 'blog_app:tag' tag.slug %}" rel="tag">{{tag}}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8 col-sm-offset-1">
+            <div class="post">
+              <div class="post-thumbnail"><img src="{{media_url}}{{entrada.image}}" alt="Blog Featured Image"/></div>
+              <div class="post-header font-alt">
+                <h1 class="post-title">{{ entrada.title }}</h1>
+                <div class="post-meta">By&nbsp;<span>{{ entrada.autor.name }}</span>  {{  entrada.created|date:"d M Y"  }} 
+                    <a href="{% url 'blog_app:categoria' entrada.categoria.slug %}">{{entrada.categoria}} </a>
+                </div>
+              </div>
+              <div class="post-entry">
+                {{ entrada.description|safe }}
+              </div>
+            </div>
+            {% if not comentarios|length < 1 %}
+            <div class="comments">
+              <h4 class="comment-title font-alt">Total comentarios: {{ comentarios|length }}</h4>
+              {% for comentario in comentarios %}
+                <div class="comment clearfix">
+                    <div class="comment-content clearfix">
+                    <div class="comment-author font-alt"><span>{{ comentario.autor.get_short_name }}</span></div>
+                    <div class="comment-body">
+                        <p>{{ comentario.comment }}</p>
+                    </div>
+                    <div class="comment-meta font-alt">{{ comentario.created }}
+                    </div>
+                    </div>
+                </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <div class="comment-form">
+              <h4 class="comment-form-title font-alt">Add your comment</h4>
+              <form method="post">
+                {% csrf_token %}
+                <!-- <div class="form-group">
+                 
+                  <input id="id_autor" name="autor" value="{{ user.name }}" type="hidden" />
+                  <input id="id_entrada" name="entrada" value="{{ entrada.slug }}" type="hidden" />
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" id="id_comment" name="comment" rows="4" placeholder="Comment"></textarea>
+                </div>  -->
+
+                {{form.as_p}}
+                <button class="btn btn-round btn-d" type="submit">Comentar</button>
+              </form>
+            </div>
+            {% else %}
+              <h3>Debe iniciar sesión si quieres comentar</h3>
+            {% endif %}
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </div>

@@ -119,6 +119,7 @@ class InfoSection(models.Model):
         ('3', 'entradas'),
         ('4', 'servicios'),
         ('5', 'newsletter'),
+        ('6', 'contacto'),
     ]
 
     section = models.CharField(max_length=1, choices=SECTION_CHOICES, verbose_name='Sección')

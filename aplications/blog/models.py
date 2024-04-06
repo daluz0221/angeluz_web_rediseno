@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.utils.text import slugify
 
@@ -6,7 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from aplications.users.models import User
 # Create your models here.
 
-
+from .managers import EntradaManager, CategoriaEntradaManager, TagManager, ComentarioManager
 
 class CategoriaEntrada(models.Model):
     name = models.CharField(max_length=100, verbose_name='Nombre')
@@ -15,7 +16,7 @@ class CategoriaEntrada(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
 
-    # objects = CategoriaEntradaManager()
+    objects = CategoriaEntradaManager()
 
     class Meta:
         verbose_name = 'categoría de entrada'
@@ -33,7 +34,7 @@ class Tag(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
 
-    # objects = TagManager()
+    objects = TagManager()
 
     class Meta:
         verbose_name = 'tag'
@@ -58,7 +59,7 @@ class Entrada(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
 
-    # objects = EntradaManager()
+    objects = EntradaManager()
 
     class Meta:
         verbose_name = 'entrada'
@@ -66,8 +67,9 @@ class Entrada(models.Model):
         ordering = ['-created']
 
     def save(self, *args, **kawrgs):
-        if not self.slug:
-            self.slug = slugify(self.title)
+        if self.slug == slugify(self.title):
+            time = datetime.now().microsecond
+            self.slug = self.slug + '-' + str(time)
         super(Entrada, self).save(*args, **kawrgs)
 
     def __str__(self):
@@ -84,7 +86,7 @@ class Comentario(models.Model):
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de edición')
 
 
-    # objects = ComentarioManager()
+    objects = ComentarioManager()
 
     class Meta:
         verbose_name = 'comentario'

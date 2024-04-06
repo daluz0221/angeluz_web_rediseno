@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Default stylesheets-->
+    <link href="{% static '/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    
+    {% block cssextra %}
+        <!-- Template specific stylesheets-->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link href="{% static '/lib/animate.css/animate.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/flexslider/flexslider.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+        <link href="{% static '/lib/simple-text-rotator/simpletextrotator.css' %}" rel="stylesheet">    
+    {% endblock cssextra %}
+
+
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link id="color-scheme" href="{% static '/css/colors/default.css' %}" rel="stylesheet">
+    <title>{{ infoHome.webTitle|capfirst  }}</title>
+</head>
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+   
+
+    <main>
+
+        {% block content %}
+        
+        {% endblock content %}
+
+        {% include 'includes/footer.html' %}
+        <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+    </main>
+    
+    {% block jsextra %}
+    <script src="{% static 'lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/wow/dist/wow.js' %}"></script>
+    <script src="{% static 'lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+    <script src="{% static 'lib/isotope/dist/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+    <script src="{% static 'lib/flexslider/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/smoothscroll.js' %}"></script>
+    <script src="{% static 'lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% endblock jsextra %}
+        
+</body>
+</html>

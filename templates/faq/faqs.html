@@ -1,1 +1,9 @@
-<h1>Faqs page</h1>
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% include 'modulos/backgrounds/v1.html' %}
+
+    {% include 'modulos/faqs/v1.html' with info=faqs %}
+    
+{% endblock content %}
