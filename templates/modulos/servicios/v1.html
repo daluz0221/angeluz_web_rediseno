@@ -7,13 +7,13 @@
           {% endif %}
           {% if info.subtitle %}
             <div class="module-subtitle font-serif">{{ info.subtitle }}.</div>
-          {% endif %}
-          {% if info.description %}
+            {% endif %}
+            {% if info.description %}
             <div class="module-subtitle">{{ info.description|safe }}</div>
-          {% endif %}
+            {% endif %}
+          </div>
         </div>
-      </div>
-      <div class="row multi-columns-row">
+        <div class="row multi-columns-row">
         
         {% for servicio in servicios %}
           <div class="col-md-4 col-sm-6 col-xs-12">
@@ -24,6 +24,9 @@
             </div>
           </div>
         {% endfor %}
+      </div>
+      <div class="row">
+        <a  style="position: absolute; left: 47%;" href="{% url 'service_app:servicio' %}">Ver más</a>
       </div>
     </div>
   </section>

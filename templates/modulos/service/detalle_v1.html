@@ -14,9 +14,19 @@
                 {{ servicio.description|safe }}
               </div>
             </div>
-            <a class="btn btn-g btn-circle" href="{% url 'service_app:servicio' %}">Volver</a>
+            <div class="container">
+              <div class="row">
+
+                
+                <a class="btn btn-g btn-circle col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1" target="_blank" href="https://api.whatsapp.com/send/?phone={{ whatsapp }}&text=hola%2C%20quisiera%20preguntar%20por%20un%20servicio&type=phone_number">Contáctanos</a>
+                <span class="col-sm-4"></span>
+                <a class="btn btn-g btn-circle col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-xs-10"  href="{% url 'service_app:servicio' %}">Volver</a>
+              </div>
+             
+            </div>
           </div>
         </div>
+
     </div>
 </section>
   

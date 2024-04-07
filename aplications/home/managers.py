@@ -47,3 +47,11 @@ class InfoHomeManager(models.Manager):
         return self.filter(
             active=True,
         ).first()
+    
+    def get_whatsapp(self):
+        try:
+            return self.filter(
+                active=True,
+            ).first().whatsapp
+        except:
+            return 'No hay número de whatsapp registrado'

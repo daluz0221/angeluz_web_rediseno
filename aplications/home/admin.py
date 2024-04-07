@@ -34,7 +34,7 @@ class HeaderLinksAdmin(admin.ModelAdmin):
 
 class InfoHomeAdmin(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
-    list_display = ('webTitle', 'mainUrl', 'eslogan', 'phone', 'email', 'active')
+    list_display = ('webTitle', 'mainUrl', 'eslogan', 'phone', 'whatsapp', 'email', 'active')
     ordering = ('created', 'webTitle')
     search_fields = ('webTitle', 'created')
     date_hierarchy = 'created'
