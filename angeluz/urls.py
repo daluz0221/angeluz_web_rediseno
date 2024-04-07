@@ -27,6 +27,7 @@ urlpatterns = [
     path('faqs/', include(('aplications.faq.urls', 'faq'), namespace='faq')),
     path('servicios/', include(('aplications.service.urls', 'service'), namespace='service')),
     path('contacto/', include(('aplications.contact.urls', 'contact'), namespace='contact')),
+    path('newsletter/', include(('aplications.newsletter.urls', 'newsletter'), namespace='newsletter')),
     path('users/', include(('aplications.users.urls', 'users'), namespace='users')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

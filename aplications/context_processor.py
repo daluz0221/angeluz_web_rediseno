@@ -11,6 +11,7 @@ def header_and_footer(request):
     # infoSections = SectionInfo.objects.activos()
     hotServices = Service.objects.hot_services()
     whatsapp = InfoHome.objects.get_whatsapp()
+    main_url = InfoHome.objects.get_main_url()
     # redesSociales = RedesSociales.objects.activo()
     # dominio_main = Dominio.objects.all().first()
 
@@ -32,4 +33,5 @@ def header_and_footer(request):
         'infoHome': infoHome,
         'hotServices': hotServices,
         'whatsapp': whatsapp,
+        'main_url': main_url,
     }

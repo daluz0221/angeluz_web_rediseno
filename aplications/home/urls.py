@@ -10,4 +10,9 @@ urlpatterns = [
         views.HomePageView.as_view(),
         name='index'
     ),
+    path(
+        '/<message>', 
+        views.HomePageView.as_view(),
+        name='index'
+    ),
 ]

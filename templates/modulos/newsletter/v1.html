@@ -3,13 +3,13 @@
       <div class="row">
         <div class="col-sm-6 col-md-6 col-lg-4 col-lg-offset-2">
           <div class="callout-text font-alt">
-            <h3 class="callout-title">{{info.title}}</h3>
+            <h3 class="callout-title">{{info.title}}--{{ message }}</h3>
             <p>{{ info.subtitle }}</p>
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-4">
           <div class="callout-btn-box">
-            <form  role="form" method="post" action="#">
+            <form  role="form" method="post" action="{% url 'news_app:sucription' %}">
                 {% csrf_token %}
               <div class="input-group">
                 <input class="form-control" type="email" id="id_email" name="email" placeholder="Your Email" data-validation-required-message="Please enter your email address." required="required"/><span class="input-group-btn">

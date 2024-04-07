@@ -55,3 +55,11 @@ class InfoHomeManager(models.Manager):
             ).first().whatsapp
         except:
             return 'No hay número de whatsapp registrado'
+        
+    def get_main_url(self):
+        try:
+            return self.filter(
+                active=True,
+            ).first().mainUrl
+        except:
+            return 'No hay URL principal registrada'
