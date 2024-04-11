@@ -1,8 +1,10 @@
 from django.core.exceptions import ImproperlyConfigured
 import json
 import os
+import sys
+import dj_database_url
 from dotenv import load_dotenv
-
+from django.core.management.utils import get_random_secret_key
 
 # Carga las variables de entorno desde el archivo .env
 load_dotenv()
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).ancestor(3)
 
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key)
 
 
 
