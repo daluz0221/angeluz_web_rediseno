@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1 {
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        h3 {
+            color: #333;
+            font-size: 18px;
+            font-weight: 400;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table td {
+            padding: 10px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hola Luz angela!</h1>
+    <h3>Has recibido un nuevo mensaje</h3>
+    <table>
+        <tr>
+            <td>Nombre:</td>
+            <td>{{ nombre }}</td>
+        </tr>
+        <tr>
+            <td>Correo:</td>
+            <td>{{ correo }}</td>
+        </tr>
+        <tr>
+            <td>Mensaje:</td>
+            <td>{{ mensaje }}</td>
+        </tr>
+    </table>
+</body>
+</html>

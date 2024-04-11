@@ -18,6 +18,12 @@
         {% elif section.section == '3' %}
             {% include 'modulos/blog/v1.html' with info=section entradas=entradas_home %}
         {% elif section.section == '5' %}
+        
+        {% if message %}
+            <div class="alert alert-success" role="alert">
+                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button> Su corre fue agregdo satifactoriamente
+            </div>
+        {% endif %}
             {% include 'modulos/newsletter/v1.html' with info=section %}
         {% endif %}
                 

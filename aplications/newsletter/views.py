@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse_lazy
+<<<<<<< HEAD
 
+=======
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+>>>>>>> 2ab4e91 (Terminada v1 del proyecto contaluz)
 # Create your views here.
 
 from django.views.generic import FormView
@@ -24,17 +29,28 @@ class NewsletterAddEmailView(FormView):
             )
         
         #Enviar email al usuario para que acepte si quiere que le lleguen cosas
+        
+        template = 'newsletter_email_user_template.html'
+        context = {
+            'token': token,
+        }
+            
         subject = 'Confirmación de suscripción'
-        message = 'Para confirmar la suscripción da click en el siguiente enlace: ' +  ' ingresando el siguiente codigo' + token
-        email_remitente = 'daluz0221@gmail.com'
+        message_to_send = render_to_string(template, context)
+        
 
-        # send_mail(
-        #     subject,
-        #     message,
-        #     email_remitente,
-        #     [new_email.email],
-        #     fail_silently=False,
-        # )
+        try:
+            send_mail(
+            subject,
+            '',
+            None,
+            [new_email.email],
+            fail_silently=False,
+            html_message=message_to_send
+        )
+        except Exception as e:
+            print(e)
+            return HttpResponse('Error al enviar el correo')
         print(token)
         new_email.save()
         return HttpResponseRedirect(
