@@ -3,18 +3,12 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render
 from django.urls import reverse_lazy
-<<<<<<< HEAD
-
-# Create your views here.
-from django.views.generic import CreateView, TemplateView
-=======
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
 # Create your views here.
 from django.views.generic import CreateView, TemplateView
 from django.conf import settings
->>>>>>> 2ab4e91 (Terminada v1 del proyecto contaluz)
 
 from aplications.home.models import Background
 
