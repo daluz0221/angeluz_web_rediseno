@@ -1,12 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse_lazy
-<<<<<<< HEAD
-
-=======
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
->>>>>>> 2ab4e91 (Terminada v1 del proyecto contaluz)
 # Create your views here.
 
 from django.views.generic import FormView
