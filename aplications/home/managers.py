@@ -63,3 +63,13 @@ class InfoHomeManager(models.Manager):
             ).first().mainUrl
         except:
             return 'No hay URL principal registrada'
+        
+    def get_whatsapp_text(self):
+        try:
+            text = self.filter(
+                active=True,
+            ).first().textoWhatsapp
+            text = text.replace(' ', '%20').replace('\n', '%0A').replace(',', '%2C').replace('.', '%2E').replace(';', '%3B').replace(':', '%3A').replace('?', '%3F').replace('¿', '%C2%BF').replace('¡', '%C2%A1').replace('!', '%21').replace('á', '%C3%A1').replace('é', '%C3%A9').replace('í', '%C3%AD').replace('ó', '%C3%B3').replace('ú', '%C3%BA').replace('Á', '%C3%81').replace('É', '%C3%89').replace('Í', '%C3%8D').replace('Ó', '%C3%93').replace('Ú', '%C3%9A').replace('ñ', '%C3%B1').replace('Ñ', '%C3%91')
+            return text
+        except:
+            return 'No hay texto de whatsapp registrado'
