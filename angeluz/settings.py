@@ -142,8 +142,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = 'staticfiles/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "staticfiles/media")
 
 # CKEDITOR CONFIGURATION
 CKEDITOR_UPLOAD_PATH = 'uploads/'
