@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ["contaluz-app-8ee7r.ondigitalocean.app"]
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
