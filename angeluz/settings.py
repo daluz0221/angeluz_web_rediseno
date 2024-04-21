@@ -26,11 +26,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ["dolphin-app-o42pa.ondigitalocean.app", "contaluz-asesores.com", "www.contaluz-asesores.com"]
 
-
+print("====================================")
+print(os.getenv("DEBUG", "False"))
+print("====================================")
+print(os.getenv("DEVELOPMENT_MODE", "False"))
+print("====================================")
 # Application definition
 
 INSTALLED_APPS = [
@@ -89,7 +93,7 @@ WSGI_APPLICATION = 'angeluz.wsgi.application'
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
-if "1" == "2":
+if DEVELOPMENT_MODE is True:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
