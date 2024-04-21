@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'angeluz.wsgi.application'
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
-if DEVELOPMENT_MODE is True:
+if "1" == "2":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
