@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import sys
 import dj_database_url
+from decouple import config
 from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 
@@ -23,18 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+SECRET_KEY = config("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = config("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ["dolphin-app-o42pa.ondigitalocean.app", "contaluz-asesores.com", "www.contaluz-asesores.com"]
 
-print("====================================")
-print(os.getenv("DEBUG", "False"))
-print("====================================")
-print(os.getenv("DEVELOPMENT_MODE", "False"))
-print("====================================")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -91,7 +88,7 @@ WSGI_APPLICATION = 'angeluz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+DEVELOPMENT_MODE = config("DEVELOPMENT_MODE", "False") == "True"
 
 if DEVELOPMENT_MODE is True:
     DATABASES = {
@@ -101,7 +98,7 @@ if DEVELOPMENT_MODE is True:
         }
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
+    if config("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
@@ -173,3 +170,13 @@ CKEDITOR_CONFIGS = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# EMAIL CONFIGURATION
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config("EMAIL_HOST", "mail.privateemail.com")
+EMAIL_PORT = config("EMAIL_PORT", 465)
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", "")
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", "")
