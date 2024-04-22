@@ -17,8 +17,8 @@ class UserManager(BaseUserManager, models.Manager):
         )
         user.set_password(password)
         user.save(using=self.db)
-        message1 = ('Bienvenido a Angeluz', 'Gracias por registrarte en nuestra plataforma', settings.DEFAULT_FROM_EMAIL, [email])
-        message2 = ('Nuevo usuario registrado', 'Se ha registrado un nuevo usuario', settings.DEFAULT_FROM_EMAIL, [settings.DEFAULT_FROM_EMAIL])
+        message1 = ('Bienvenido a Angeluz', 'Gracias por registrarte en nuestra plataforma', "luzagomez@contaluz-asesores.com", [email])
+        message2 = ('Nuevo usuario registrado', 'Se ha registrado un nuevo usuario', "luzagomez@contaluz-asesores.com", ["luzagomez@contaluz-asesores.com"])
         send_mass_mail(
             (message1, message2),
             fail_silently=False
