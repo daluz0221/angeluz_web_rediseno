@@ -46,7 +46,7 @@ class AddContactMessageView(CreateView):
             send_mail(
                 subject,
                 '',
-                None,
+                settings.DEFAULT_FROM_EMAIL,
                 [settings.DEFAULT_FROM_EMAIL],
                 fail_silently=False,
                 html_message=message_to_send

@@ -7,4 +7,5 @@ db.sqlite3
 !.elasticbeanstalk/*.global.yml
 media/*
 
-env*
+env/*
+env/lib/*

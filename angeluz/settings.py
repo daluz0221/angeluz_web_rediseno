@@ -29,7 +29,7 @@ SECRET_KEY = config("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["dolphin-app-o42pa.ondigitalocean.app", "contaluz-asesores.com", "www.contaluz-asesores.com"]
+ALLOWED_HOSTS = ["dolphin-app-o42pa.ondigitalocean.app", "contaluz-asesores.com", "www.contaluz-asesores.com", "localhost"]
 
 
 # Application definition
@@ -101,7 +101,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if config("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+        "default": dj_database_url.parse(config("DATABASE_URL")),
     }
 
 

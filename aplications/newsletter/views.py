@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.conf import settings
 # Create your views here.
 
 from django.views.generic import FormView
@@ -39,7 +40,7 @@ class NewsletterAddEmailView(FormView):
             send_mail(
             subject,
             '',
-            None,
+            settings.DEFAULT_FROM_EMAIL,
             [new_email.email],
             fail_silently=False,
             html_message=message_to_send
