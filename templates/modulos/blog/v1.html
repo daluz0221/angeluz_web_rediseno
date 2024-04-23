@@ -13,7 +13,7 @@
         {% for entrada in entradas %}
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="post mb-20">
-                    <div class="post-thumbnail"><a href="#"><img src="{{media_url}}{{entrada.image}} " alt="Blog-post Thumbnail"/></a></div>
+                    <div class="post-thumbnail"><a href="#"><img src="{{entrada.image.url}} " alt="Blog-post Thumbnail"/></a></div>
                 <div class="post-header font-alt">
                 <h2 class="post-title"><a href="#">{{ entrada.title }}</a></h2>
                 <div class="post-meta">By&nbsp;<span>{{entrada.autor.name}}</span>&nbsp;| {{ entrada.created|date:"d M Y" }} 

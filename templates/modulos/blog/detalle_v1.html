@@ -16,7 +16,7 @@
               <ul class="widget-posts">
                 {% for entrada in entradas %}
                   <li class="clearfix">
-                    <div class="widget-posts-image"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img src="{{media_url}}{{entrada.image}}" alt="Post Thumbnail"/></a></div>
+                    <div class="widget-posts-image"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img src="{{entrada.image.url}}" alt="Post Thumbnail"/></a></div>
                     <div class="widget-posts-body">
                       <div class="widget-posts-title"><a href="{% url 'blog_app:entrada' entrada.slug %}">{{ entrada.title }}</a></div>
                       <div class="widget-posts-meta">{{ entrada.created|date:"d M" }}</div>
@@ -36,7 +36,7 @@
           </div>
           <div class="col-sm-8 col-sm-offset-1">
             <div class="post">
-              <div class="post-thumbnail"><img src="{{media_url}}{{entrada.image}}" alt="Blog Featured Image"/></div>
+              <div class="post-thumbnail"><img src="{{entrada.image.url}}" alt="Blog Featured Image"/></div>
               <div class="post-header font-alt">
                 <h1 class="post-title">{{ entrada.title }}</h1>
                 <div class="post-meta">By&nbsp;<span>{{ entrada.autor.name }}</span>  {{  entrada.created|date:"d M Y"  }} 

@@ -37,7 +37,7 @@
                         {% for entrada in entradas_destcadas %}
                         <li class="clearfix">
                             <div class="widget-posts-image"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img
-                                        src="{{media_url}}{{entrada.image}}" alt="Post Thumbnail" /></a></div>
+                                        src="{{entrada.image.url}}" alt="Post Thumbnail" /></a></div>
                             <div class="widget-posts-body">
                                 <div class="widget-posts-title"><a href="{% url 'blog_app:entrada' entrada.slug %}">{{ entrada.title }}</a></div>
                                 <div class="widget-posts-meta">{{ entrada.created|date:"d M" }}</div>
@@ -65,7 +65,7 @@
                     <div class="col-sm-6 col-md-4 col-lg-4">
                         <div class="post">
                             <div class="post-thumbnail"><a href="{% url 'blog_app:entrada' entrada.slug %}"><img
-                                        src="{{media_url}}{{entrada.image}}" alt="Blog-post Thumbnail" /></a></div>
+                                        src="{{entrada.image.url}}" alt="Blog-post Thumbnail" /></a></div>
                             <div class="post-header font-alt">
                                 <h2 class="post-title"><a href="{% url 'blog_app:entrada' entrada.slug %}">{{ entrada.title }}</a></h2>
                                 <div class="post-meta">By&nbsp;<a href="#">{{ entrada.autor.name }}</a>&nbsp; {{ entrada.created|date:"d M Y" }}
