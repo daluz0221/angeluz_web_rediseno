@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import sys
 import dj_database_url
+import cloudinary_storage
 from decouple import config
 from django.core.management.utils import get_random_secret_key
 from pathlib import Path
@@ -47,6 +48,8 @@ INSTALLED_APPS = [
     'aplications.users',
     'aplications.newsletter',
     'aplications.contact',
+    'cloudinary',
+    'cloudinary_storage',
     'ckeditor',
     'ckeditor_uploader',
     'grappelli',
@@ -180,3 +183,14 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", "")
 EMAIL_HOST_USER = DEFAULT_FROM_EMAIL
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", "")
+
+
+# CLOUDINARY CONFIGURATION
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config("CLOUDINARY_CLOUD_NAME", ""),
+    'API_KEY': config("CLOUDINARY_API_KEY", ""),
+    'API_SECRET': config("CLOUDINARY_API_SECRET", ""),
+}
+
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
