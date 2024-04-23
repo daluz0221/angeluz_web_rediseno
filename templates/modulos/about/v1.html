@@ -1,9 +1,9 @@
 {% load static %}
 <section class="module pt-0 pb-0" id="about">
-    {% if info.image %}
+    {% if info.image.url %}
         <div class="row position-relative m-0">
-            {% with info.image as img %}
-                <div class="col-xs-12 col-md-6 side-image" data-background="{{media_url}}{{img}}"></div>
+            {% with info.image.url as img %}
+                <div class="col-xs-12 col-md-6 side-image" data-background="{{img}}"></div>
             {% endwith %}
             <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
                 <div class="row">

@@ -4,7 +4,7 @@
         {% for servicio in services %}            
             <li class="work-item">
                 <a href="{% url 'service_app:servicio_detail' servicio.slug %}">
-                    <div class="work-image"><img src="{{ media_url }}{{ servicio.image }}" alt="Portfolio Item"/></div>
+                    <div class="work-image"><img src="{{ servicio.image.url }}" alt="Portfolio Item"/></div>
                     <div class="work-caption font-alt">
                     <h3 class="work-title">{{ servicio.title }}</h3>
                     <div class="work-descr">{{ servicio.summary }}</div>
